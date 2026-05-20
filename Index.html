@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro & Tamiris - Para Sempre</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fff5f5;
+            color: #4a4a4a;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Corações Flutuantes de Fundo */
+        .bg-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Cabeçalho */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(255, 245, 245, 0.5), rgba(255, 245, 245, 0.9)), url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1200') no-repeat center center/cover;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #d63447;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            max-width: 600px;
+            color: #636363;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Player de Música */
+        .music-box {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .music-icon {
+            font-size: 1.5rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Contador */
+        .counter-section {
+            padding: 60px 20px;
+            background-color: #ffe3e3;
+            text-align: center;
+        }
+
+        .counter-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #d63447;
+            margin-bottom: 30px;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            min-width: 100px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #d63447;
+        }
+
+        .time-box label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+        }
+
+        /* Nossa História */
+        .history-section {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .history-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: #d63447;
+            margin-bottom: 20px;
+        }
+
+        .story-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-left: 5px solid #d63447;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        /* Galeria de Fotos */
+        .gallery-section {
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .gallery-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: #d63447;
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .photo-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 0.9rem;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .photo-card p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-hearts" id="hearts-container"></div>
+
+    <header>
+        <h1>Pedro Henrique & Tamiris</h1>
+        <p class="quote">"Se te querer tanto é errado... prefiro continuar errando!"</p>
+        
+        <div class="music-box">
+            <span class="music-icon">🎵</span>
+            <span><strong>Nossa Música:</strong> Te Vivo - Luan Santana</span>
+        </div>
+    </header>
+
+    <section class="counter-section">
+        <h2>O Nosso Tempo Juntos...</h2>
+        <div class="countdown-container">
+            <div class="time-box">
+                <span id="days">00</span>
+                <label>Dias</label>
+            </div>
+            <div class="time-box">
+                <span id="hours">00</span>
+                <label>Horas</label>
+            </div>
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <label>Minutos</label>
+            </div>
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <label>Segundos</label>
+            </div>
+        </div>
+    </section>
+
+    <section class="history-section">
+        <h2>A Nossa História</h2>
+        <div class="story-card">
+            <h3>Nossa Primeira Viagem 🌊</h3>
+            <p style="margin-top: 10px; line-height: 1.6; color: #666;">
+                Mesmo sem lembrarmos da data exata, a nossa primeira viagem juntos para a praia ficou marcada para sempre. O barulho do mar e a tua companhia tornaram aquele momento inesquecível.
+            </p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <h2>Mural de Momentos</h2>
+        <div class="grid">
+            
+            <div class="photo-card">
+                <img class="photo-placeholder" src="foto1.jpg" alt="Nossa primeira viagem" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="photo-placeholder" style="display:none;">📸 Coloque a Foto Aqui</div>
+                <p>Nossa primeira viagem</p>
+            </div>
+
+            <div class="photo-card">
+                <img class="photo-placeholder" src="foto2.jpg" alt="Sua formatura da escola" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="photo-placeholder" style="display:none;">📸 Coloque a Foto Aqui</div>
+                <p>Sua formatura da escola</p>
+            </div>
+
+            <div class="photo-card">
+                <img class="photo-placeholder" src="foto3.jpg" alt="Festa junina" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="photo-placeholder" style="display:none;">📸 Coloque a Foto Aqui</div>
+                <p>Festa junina</p>
+            </div>
+
+            <div class="photo-card">
+                <img class="photo-placeholder" src="foto4.jpg" alt="Virada de ano" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="photo-placeholder" style="display:none;">📸 Coloque a Foto Aqui</div>
+                <p>Virada de ano</p>
+            </div>
+
+            <div class="photo-card">
+                <img class="photo-placeholder" src="foto5.jpg" alt="O dia que te conheci!" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="photo-placeholder" style="display:none;">📸 Coloque a Foto Aqui</div>
+                <p>O dia que te conheci!</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>Feito com ❤️ por Pedro Henrique para Tamiris</p>
+    </footer>
+
+    <script>
+        // Configuração da Data de Namoro (09 de Janeiro de 2024)
+        // Mês em JavaScript começa em 0 (Janeiro = 0, Fevereiro = 1...)
+        const startDate = new Date(2024, 0, 9, 0, 0, 0); 
+
+        function updateCounter() {
+            const now = new Date();
+            const difference = now - startDate;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        // Atualiza a cada segundo
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+        // Gerador de corações flutuantes simples
+        function createHeart() {
+            const container = document.getElementById('hearts-container');
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'absolute';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '105vh';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.opacity = Math.random() * 0.5 + 0.2;
+            heart.style.transition = 'transform 6s linear, opacity 6s ease';
+            
+            container.appendChild(heart);
+
+            setTimeout(() => {
+                heart.style.transform = `translateY(-110vh) translateX(${Math.random() * 50 - 25}px)`;
+                heart.style.opacity = '0';
+            }, 100);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+        setInterval(createHeart, 800);
+    </script>
+</body>
+</html>
